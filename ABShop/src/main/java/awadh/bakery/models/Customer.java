@@ -1,12 +1,17 @@
 package awadh.bakery.models;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Pattern;
 @Entity
+@Table(name="customer")
 public class Customer {
-	
+	@Id
+	@Column(name="id",nullable=false)
 	private int custID;
 	
     public Customer(int custID, @NotEmpty(message = "Name cannot be empty") String name,
@@ -61,15 +66,19 @@ public class Customer {
 		this.address = address;
 	}
 
+	@Column
 	@NotEmpty(message = "Name cannot be empty")
     private String name;
-
+    
+	@Column
     @Email(message = "Invalid email format")
     private String email;
-
+    
+	@Column
     @Pattern(regexp = "\\d{10}", message = "Invalid phone number format")
     private String phone;
-
+	@Column
+	@NotEmpty(message = "Address cannot be empty")
     private String address;
 
     // Getters and setters
