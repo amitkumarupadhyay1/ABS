@@ -81,5 +81,11 @@ public class Customer {
 	@NotEmpty(message = "Address cannot be empty")
     private String address;
 
+	@Override
+	public String toString() {
+		return "Customer [custID=" + custID + ", name=" + name + ", email=" + email + ", phone=" + phone + ", address="
+				+ address + "]";
+	}
+
     // Getters and setters
 }
