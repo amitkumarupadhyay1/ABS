@@ -28,8 +28,8 @@
                     <td th:text="${customer.phone}"></td>
                     <td th:text="${customer.address}"></td>
                     <td>
-                        <a class="btn btn-primary btn-sm" th:href="@{'/editCustomer/' + ${customer.custID}}">Edit</a>
-                        <a class="btn btn-danger btn-sm" th:href="@{'/deleteCustomer/' + ${customer.custID}}">Delete</a>
+                        <a class="btn btn-primary btn-sm" th:href="@{'/customer/edit/' + ${customer.custID}}">Edit</a>
+                        <a class="btn btn-danger btn-sm" th:href="@{'/customer/delete/' + ${customer.custID}}">Delete</a>
                     </td>
                 </tr>
             </tbody>
