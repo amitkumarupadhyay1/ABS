@@ -60,7 +60,6 @@ public class Customer implements Serializable{
 	@NotEmpty(message = "Address cannot be empty")
     private String address;
 	@Transient
-	@Size(max = 300 * 1024, message = "Image size must be less than or equal to 300 KB")
 	private MultipartFile imageFile;
 	
 	private String imageFileName; 
