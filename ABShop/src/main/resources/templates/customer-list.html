@@ -22,14 +22,14 @@
             </thead>
             <tbody>
                 <tr th:each="customer : ${customers}">
-                    <td th:text="${customer.custID}"></td>
+                    <td th:text="${customer.id}"></td>
                     <td th:text="${customer.name}"></td>
                     <td th:text="${customer.email}"></td>
                     <td th:text="${customer.phone}"></td>
                     <td th:text="${customer.address}"></td>
                     <td>
-                        <a class="btn btn-primary btn-sm" th:href="@{'/customer/edit/' + ${customer.custID}}">Edit</a>
-                        <a class="btn btn-danger btn-sm" th:href="@{'/customer/delete/' + ${customer.custID}}">Delete</a>
+                        <a class="btn btn-primary btn-sm" th:href="@{'/customer/edit/' + ${customer.id}}">Edit</a>
+                        <a class="btn btn-danger btn-sm" th:href="@{'/customer/delete/' + ${customer.id}}">Delete</a>
                     </td>
                 </tr>
             </tbody>
