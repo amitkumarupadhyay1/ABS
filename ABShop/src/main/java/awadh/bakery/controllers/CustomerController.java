@@ -24,8 +24,8 @@ public class CustomerController {
 
     @Autowired
     private CustomerRepository customerRepository;
-    @Value("${upload.directory}") // Get the upload directory path from application.properties
-    private String uploadDirectory;
+    //@Value("${upload.directory}") // Get the upload directory path from application.properties
+    //private String uploadDirectory;
     
     
     @GetMapping("/")
@@ -60,10 +60,16 @@ public class CustomerController {
             bindingResult.rejectValue("imageFile", "image.size", "Image size exceeds the allowed limit");
             return "customer-form";
         }
+        // Check if the file's content type is one of the allowed image types
+        String contentType = imageFile.getContentType();
+        if (!contentType.equals("image/jpeg") && !contentType.equals("image/jpg") && !contentType.equals("image/png")) {
+            bindingResult.rejectValue("imageFile", "image.type", "Only JPEG and PNG files are allowed");
+            return "customer-form";
+        }
 
         // Save the image to the server
         if (!imageFile.isEmpty()) {
-            String uploadDirectory = "src/main/resources/customerImages"; // Specify the storage location
+            String uploadDirectory = "D:\\My Workspace\\Spring\\ABS\\ABShop\\src\\main\\resources\\customerImages\\"; //Specify the storage location"
             String originalFileName = imageFile.getOriginalFilename();
             String uniqueFileName = System.currentTimeMillis() + "_" + originalFileName;
 
@@ -108,4 +114,7 @@ public class CustomerController {
         return "redirect:/customers/list";
     }
 
+    
+   
+    
 }
