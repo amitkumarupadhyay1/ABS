@@ -24,9 +24,6 @@ public class CustomerController {
 
     @Autowired
     private CustomerRepository customerRepository;
-    //@Value("${upload.directory}") // Get the upload directory path from application.properties
-    //private String uploadDirectory;
-    
     
     @GetMapping("/")
     public String redirectToCustomerList() {
@@ -56,7 +53,7 @@ public class CustomerController {
         }
 
         // Validate the image size here
-        if (!imageFile.isEmpty() && imageFile.getSize() > 300 * 1024) {
+        if (!imageFile.isEmpty() && imageFile.getSize() > 2048 * 1024) {
             bindingResult.rejectValue("imageFile", "image.size", "Image size exceeds the allowed limit");
             return "customer-form";
         }
