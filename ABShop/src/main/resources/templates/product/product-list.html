@@ -27,13 +27,13 @@
 			</thead>
 			<tbody>
 				<tr th:each="product : ${product}">
-					<td th:text="${customer.id}"></td>
-					<td th:text="${customer.name}"></td>
-					<td th:text="${customer.DESCRIPTION}"></td>
-					<td th:text="${customer.MRP}"></td>
-					<td th:text="${customer.MFD}"></td>
-					<td th:text="${customer.EXPIRY_DATE}"></td>
-					<td th:text="${customer.MODEL}"></td>
+					<td th:text="${Product.id}"></td>
+					<td th:text="${Product.name}"></td>
+					<td th:text="${Product.DESCRIPTION}"></td>
+					<td th:text="${Product.MRP}"></td>
+					<td th:text="${Product.MFD}"></td>
+					<td th:text="${Product.EXPIRY_DATE}"></td>
+					<td th:text="${product.MODEL}"></td>
 					<td>
 						<img th:src="'/productImages/' + ${product.imageFileName}" width="100" height="100"
 							alt="Product Image" border="2" class="rounded mx-auto d-block" />
