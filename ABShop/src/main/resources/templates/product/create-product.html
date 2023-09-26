@@ -1,10 +1,78 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="UTF-8">
-<title>Add your product</title>
+    <meta charset="UTF-8">
+    <title>Customer Form</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
 </head>
 <body>
-
+    <div class="container">
+        <h1>ADD PRODUCT</h1>
+        <form th:object="${product}" th:action="@{/saveProduct}" method="post" enctype="multipart/form-data">
+            <table class="table table-bordered table-striped">
+                <tr>
+                    <td >
+                        <label for="name">Name:</label>
+                    </td>
+                    <td>
+                        <input type="text" id="name" name="name" th:field="*{name}" class="form-control" required>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="text">DESCRIPTION:</label>
+                    </td>
+                    <td>
+                        <textarea id="DESCRIPTION" name="DESCRIPTION" th:field="*{DESCRIPTION}" class="form-control" required></textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="MRP">MRP:</label>
+                    </td>
+                    <td>
+                        <input type="teL" id="MRP" name="MRP" th:field="*{MRP}" class="form-control" required pattern="[0-9]{10}">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="MFD">MFD:</label>
+                    </td>
+                    <td>
+                        <input type="date" id="MFD" name="MFD" th:field="*{MFD}" class="form-control" required pattern="[0-9]{10}">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="EXPIRY_DATE">EXPIRY_DATE:</label>
+                    </td>
+                    <td>
+                        <input type="date" id="EXPIRY_DATE" name="EXPIRY_DATE" th:field="*{EXPIRY_DATE}" class="form-control" required pattern="[0-9]{10}">
+                    </td>
+                </tr>
+                <td>
+                    <label for="P.M">P.M:</label>
+                </td>
+                <td>
+                    <input type="text" id="P.M" name="P.M" th:field="*{P.M}" class="form-control" required pattern="[0-9]{10}">
+                </td>
+            </tr>
+            <td>
+                <label for="imageFile">Upload your image:</label>
+            </td>
+            <td>
+                 <input type="file" id="imageFile" name="imageFile" class="form-control-file">
+            </td>
+        </tr>
+             
+            </table>
+            <button type="submit" class="btn btn-primary" >Save</button>
+        </form>
+    </div>
+    
+     <div th:if="${successMessage}" class="alert alert-success">
+        <p th:text="${successMessage}"></p>
+    </div>
 </body>
+
 </html>
