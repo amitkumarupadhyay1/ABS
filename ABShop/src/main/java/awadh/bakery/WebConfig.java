@@ -16,8 +16,8 @@ public class WebConfig implements WebMvcConfigurer {
          // .addResourceLocations("file:///D:/My Workspace/Spring/ABS/ABShop/src/main/resources/customerImages/");
           
           registry
-          .addResourceHandler("/customerImages/**")
-          .addResourceLocations("classpath:/customerImages/");
+          .addResourceHandler("/customerImages/**","/static/**")
+          .addResourceLocations("classpath:/customerImages/","classpath:/static/");
           
     }
 }

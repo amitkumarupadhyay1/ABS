@@ -1,0 +1,55 @@
+@charset "UTF-8";
+/* Gradient background */
+        body {
+            background: linear-gradient(to bottom, rgb(41, 214, 50), rgb(0, 128, 255)); /* Adjust gradient colors as needed */
+            color: #fff; /* Text color */
+        }
+        
+        
+
+        /* Center content vertically and horizontally */
+        body, html {
+            height: 100%;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        /* Additional styles */
+        h1 {
+            font-size: 24px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        /* Style the table */
+        .table {
+            background-color: rgba(255, 255, 255, 0.2); /* Semi-transparent white background for the table */
+        }
+
+        /* Style the Edit and Delete buttons */
+        .btn-edit {
+            background-color: #28a745; /* Green color for Edit button */
+            color: #fff;
+            border: none;
+        }
+
+        .btn-delete {
+            background-color: #dc3545; /* Red color for Delete button */
+            color: #fff;
+            border: none;
+        }
+
+        /* Style the product image */
+        .product-image {
+            max-width: 100px; /* Set a maximum width for the image */
+        }
+
+        /* Style the "Add Product" button */
+        .btn-add-product {
+            background-color: rgb(0, 255, 128); /* Blue color for "Add Product" button */
+            color: #fff;
+        }
