@@ -127,7 +127,9 @@ public class product {
 	}
 	public product() {
 		super();
-	} 
+	}
+    public void setImageFileName(String uniqueFileName) {
+    } 
     
     
     
