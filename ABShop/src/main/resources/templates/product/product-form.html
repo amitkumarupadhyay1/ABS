@@ -15,7 +15,7 @@
                         <label for="name">Name:</label>
                     </td>
                     <td>
-                        <input type="text" id="name" name="name" th:field="*{name}" class="form-control" required>
+                        <input type="text" id="name" name="name" th:field="*{productName}" class="form-control" required>
                     </td>
                 </tr>
                 <tr>
@@ -23,7 +23,7 @@
                         <label for="text">DESCRIPTION:</label>
                     </td>
                     <td>
-                        <textarea id="DESCRIPTION" name="DESCRIPTION" th:field="*{DESCRIPTION}" class="form-control" required></textarea>
+                        <textarea id="DESCRIPTION" name="DESCRIPTION" th:field="*{productDesc}" class="form-control" required></textarea>
                     </td>
                 </tr>
                 <tr>
@@ -31,7 +31,7 @@
                         <label for="MRP">MRP:</label>
                     </td>
                     <td>
-                        <input type="number" id="MRP" name="MRP" th:field="*{MRP}" class="form-control" required pattern="[0-9]{10}">
+                        <input type="number" id="MRP" name="MRP" th:field="*{productMRP}" class="form-control" required pattern="[0-9]{10}">
                     </td>
                 </tr>
                 <tr>
@@ -39,7 +39,7 @@
                         <label for="MFD">MFD:</label>
                     </td>
                     <td>
-                        <input type="date" id="MFD" name="MFD" th:field="*{MFD}" class="form-control" required pattern="[0-9]{10}">
+                        <input type="date" id="MFD" name="MFD" th:field="*{productMFD}" class="form-control" required pattern="[0-9]{10}">
                     </td>
                 </tr>
                 <tr>
@@ -47,14 +47,14 @@
                         <label for="EXPIRY_DATE">EXPIRY_DATE:</label>
                     </td>
                     <td>
-                        <input type="date" id="EXPIRY_DATE" name="EXPIRY_DATE" th:field="*{EXPIRY_DATE}" class="form-control" required pattern="[0-9]{10}">
+                        <input type="date" id="EXPIRY_DATE" name="EXPIRY_DATE" th:field="*{productExpiryDate}" class="form-control" required pattern="[0-9]{10}">
                     </td>
                 </tr>
                 <td>
                     <label for="P.M">P.M:</label>
                 </td>
                 <td>
-                    <input type="text" id="P.M" name="P.M" th:field="*{P.M}" class="form-control" required pattern="[0-9]{10}">
+                    <input type="text" id="P.M" name="P.M" th:field="*{productModel}" class="form-control" required pattern="[0-9]{10}">
                 </td>
             </tr>
             <td>

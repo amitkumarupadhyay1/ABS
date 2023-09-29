@@ -66,7 +66,7 @@ public class CustomerController {
 
         // Save the image to the server
         if (!imageFile.isEmpty()) {
-            String uploadDirectory = "D:\\My Workspace\\Spring\\ABS\\ABShop\\src\\main\\resources\\customerImages\\"; //Specify the storage location"
+            String uploadDirectory = "C:\\Users\\zaid khan\\Desktop\\C\\MARKET\\src\\main\\resources\\customerImages\\"; //Specify the storage location"
             String originalFileName = imageFile.getOriginalFilename();
             String uniqueFileName = System.currentTimeMillis() + "_" + originalFileName;
 

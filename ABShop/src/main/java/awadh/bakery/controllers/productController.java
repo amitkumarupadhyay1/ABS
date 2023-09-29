@@ -24,22 +24,18 @@ public class productController {
     @Autowired
     private productRepository productRepository;
 
-    @GetMapping("/")
-    public String redirectToProductList() {
-        return "redirect:/products/list";
-    }
 
     @GetMapping("/products/list")
     public String listProducts(Model model) {
         List<product> products = productRepository.findAll();
         model.addAttribute("products", products);
-        return "product-list";
+        return "product\\product-list";
     }
 
     @GetMapping("/product/form")
     public String showProductForm(Model model) {
         model.addAttribute("product", new product());
-        return "product-form";
+        return "product\\product-form";
     }
 
     @PostMapping("/saveProduct")
@@ -48,24 +44,24 @@ public class productController {
 
         if (bindingResult.hasErrors()) {
             // Validation errors occurred, return to the form page
-            return "product-form";
+            return "product\\product-form";
         }
 
         // Validate the image size here
         if (!imageFile.isEmpty() && imageFile.getSize() > 2048 * 1024) {
             bindingResult.rejectValue("imageFile", "image.size", "Image size exceeds the allowed limit");
-            return "product-form";
+            return "product\\product-form";
         }
         // Check if the file's content type is one of the allowed image types
         String contentType = imageFile.getContentType();
         if (!contentType.equals("image/jpeg") && !contentType.equals("image/jpg") && !contentType.equals("image/png")) {
             bindingResult.rejectValue("imageFile", "image.type", "Only JPEG and PNG files are allowed");
-            return "product-form";
+            return "product\\product-form";
         }
 
         // Save the image to the server
         if (!imageFile.isEmpty()) {
-            String uploadDirectory = "D:\\My Workspace\\Spring\\ABS\\ABShop\\src\\main\\resources\\productImages\\"; // Specify the storage location
+            String uploadDirectory = "C:\\Users\\zaid khan\\Desktop\\C\\MARKET\\src\\main\\resources\\customerImages\\";
             String originalFileName = imageFile.getOriginalFilename();
             String uniqueFileName = System.currentTimeMillis() + "_" + originalFileName;
 
@@ -87,7 +83,7 @@ public class productController {
 
         // Redirect to the product list page
         redirectAttributes.addFlashAttribute("successMessage", "Product saved successfully");
-        return "redirect:/products/list";
+        return "redirect:products/list";
     }
 
     @GetMapping("/product/edit/{id}")
