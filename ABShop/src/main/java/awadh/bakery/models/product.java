@@ -5,19 +5,21 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.Lob;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.DecimalMin;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Size;
 import jakarta.validation.constraints.NotNull;
-
 import java.io.Serializable;
 import java.math.BigDecimal;
+import lombok.*;
 
 
 
-
+@Getter @Setter
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 @Table(name = "products")
 public class product implements Serializable{
@@ -54,72 +56,8 @@ public class product implements Serializable{
     @NotEmpty(message = "Product model is required")
     @Size(max = 30, message = "Product model must not exceed 30 characters")
     private String productModel;
-    @Lob
-    @Column(name = "product_image")
-    private byte[] productImage;
-	public Long getProductId() {
-		return productId;
-	}
-	public void setProductId(Long productId) {
-		this.productId = productId;
-	}
-	public String getProductName() {
-		return productName;
-	}
-	public void setProductName(String productName) {
-		this.productName = productName;
-	}
-	public String getProductDesc() {
-		return productDesc;
-	}
-	public void setProductDesc(String productDesc) {
-		this.productDesc = productDesc;
-	}
-	public BigDecimal getProductMRP() {
-		return productMRP;
-	}
-	public void setProductMRP(BigDecimal productMRP) {
-		this.productMRP = productMRP;
-	}
-	public String getProductMFD() {
-		return productMFD;
-	}
-	public void setProductMFD(String productMFD) {
-		this.productMFD = productMFD;
-	}
-	public String getProductExpiryDate() {
-		return productExpiryDate;
-	}
-	public void setProductExpiryDate(String productExpiryDate) {
-		this.productExpiryDate = productExpiryDate;
-	}
-	public String getProductModel() {
-		return productModel;
-	}
-	public void setProductModel(String productModel) {
-		this.productModel = productModel;
-	}
-	public byte[] getProductImage() {
-		return productImage;
-	}
-	public void setProductImage(byte[] productImage) {
-		this.productImage = productImage;
-	}
-	public product() {
-		this.productId = productId;
-		this.productName = productName;
-		this.productDesc = productDesc;
-		this.productMRP = productMRP;
-		this.productMFD = productMFD;
-		this.productExpiryDate = productExpiryDate;
-		this.productModel = productModel;
-		this.productImage = productImage;
-	}
-    public void setImageFileName(String uniqueFileName) {
-    }
-
-
-
-	
+    
+	@OneToOne
+	private productImage productImage;
 	    
 }

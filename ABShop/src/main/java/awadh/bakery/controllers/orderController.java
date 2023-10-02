@@ -28,7 +28,7 @@ public class orderController {
     public String listOrders(Model model) {
         List<order> orders = orderRepository.findAll();
         model.addAttribute("orders", orders);
-        return "order-list";
+        return "/order/order-list";
     }
 
     @GetMapping("/order/form")

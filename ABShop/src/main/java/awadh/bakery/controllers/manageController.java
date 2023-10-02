@@ -9,21 +9,11 @@ public class manageController {
 
     @GetMapping("/")
     public String redirectToManage() {
-        return "redirect:/manage/orders";
+        return "manage-page";
     }
 
-    @GetMapping("/manage/orders")
-    public String redirectToOrderList() {
-        return "redirect:/orders/list";
-    }
+    
+    
 
-    @GetMapping("/manage/products")
-    public String redirectToProductList() {
-        return "redirect:/products/list";
-    }
-
-    @GetMapping("/manage/customers")
-    public String redirectToCustomerList() {
-        return "redirect:/customers/list";
-    }
+    
 }

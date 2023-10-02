@@ -16,13 +16,18 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import awadh.bakery.models.product;
+import awadh.bakery.models.productImage;
 import awadh.bakery.models.productRepository;
+import awadh.bakery.models.imageRepository;
 
 @Controller
 public class productController {
 
     @Autowired
     private productRepository productRepository;
+
+     @Autowired
+    private imageRepository imageRepository;
 
 
     @GetMapping("/products/list")
@@ -58,24 +63,15 @@ public class productController {
             bindingResult.rejectValue("imageFile", "image.type", "Only JPEG and PNG files are allowed");
             return "product\\product-form";
         }
+        
 
-        // Save the image to the server
         if (!imageFile.isEmpty()) {
-            String uploadDirectory = "C:\\Users\\zaid khan\\Desktop\\C\\MARKET\\src\\main\\resources\\customerImages\\";
-            String originalFileName = imageFile.getOriginalFilename();
-            String uniqueFileName = System.currentTimeMillis() + "_" + originalFileName;
-
-            try {
-                File file = new File(uploadDirectory, uniqueFileName);
-                FileOutputStream fileOutputStream = new FileOutputStream(file);
-                fileOutputStream.write(imageFile.getBytes());
-                fileOutputStream.close();
-            } catch (IOException e) {
-                // Handle any IO exception
-                e.printStackTrace();
-                // You can return an error message or perform other error handling here
-            }
-            product.setImageFileName(uniqueFileName);
+            productImage pi=new productImage();
+            pi.setImageName(System.currentTimeMillis() + "_"+imageFile.getOriginalFilename()); 
+            pi.setImageType(imageFile.getContentType());
+            pi.setImageData(imageFile.getBytes());
+            pi.setProduct(product); 
+            imageRepository.save(pi);     
         }
 
         // Save the product data to the database
