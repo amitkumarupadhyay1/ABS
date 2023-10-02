@@ -25,11 +25,6 @@ public class CustomerController {
     @Autowired
     private CustomerRepository customerRepository;
     
-    @GetMapping("/")
-    public String redirectToCustomerList() {
-        return "redirect:/customers/list";
-    }
-    
     @GetMapping("/customers/list")
     public String ListCustomer(Model model) {
     	List<Customer> customers=customerRepository.findAll();

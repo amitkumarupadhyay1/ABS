@@ -7,20 +7,20 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Lob;
 import jakarta.persistence.Table;
-import jakarta.persistence.Temporal;
-import jakarta.persistence.TemporalType;
 import jakarta.validation.constraints.DecimalMin;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Size;
 import jakarta.validation.constraints.NotNull;
+
+import java.io.Serializable;
 import java.math.BigDecimal;
-import java.util.Date;
+
 
 
 
 @Entity
 @Table(name = "products")
-public class product {
+public class product implements Serializable{
 
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -44,15 +44,13 @@ public class product {
 
     @Column(name = "product_mfd", nullable = false)
     @NotNull(message = "Manufacturing date is required")
-    @Temporal(TemporalType.DATE)
-    private Date productMFD;
+    private String productMFD;
 
     @Column(name = "product_expiry_date", nullable = false)
     @NotNull(message = "Expiry date is required")
-    @Temporal(TemporalType.DATE)
-    private Date productExpiryDate;
+    private String productExpiryDate;
 
-    @Column(name = "product_model", length = 30, nullable = false)
+   @Column(name = "product_model", length = 30, nullable = false)
     @NotEmpty(message = "Product model is required")
     @Size(max = 30, message = "Product model must not exceed 30 characters")
     private String productModel;
@@ -83,16 +81,16 @@ public class product {
 	public void setProductMRP(BigDecimal productMRP) {
 		this.productMRP = productMRP;
 	}
-	public Date getProductMFD() {
+	public String getProductMFD() {
 		return productMFD;
 	}
-	public void setProductMFD(Date productMFD) {
+	public void setProductMFD(String productMFD) {
 		this.productMFD = productMFD;
 	}
-	public Date getProductExpiryDate() {
+	public String getProductExpiryDate() {
 		return productExpiryDate;
 	}
-	public void setProductExpiryDate(Date productExpiryDate) {
+	public void setProductExpiryDate(String productExpiryDate) {
 		this.productExpiryDate = productExpiryDate;
 	}
 	public String getProductModel() {
@@ -107,15 +105,7 @@ public class product {
 	public void setProductImage(byte[] productImage) {
 		this.productImage = productImage;
 	}
-	public product(Long productId,
-			@NotEmpty(message = "Product name is required") @Size(max = 50, message = "Product name must not exceed 50 characters") String productName,
-			@NotEmpty(message = "Product description is required") @Size(max = 100, message = "Product description must not exceed 100 characters") String productDesc,
-			@NotNull(message = "Product MRP is required") @DecimalMin(value = "0", message = "Product MRP must be greater than or equal to 0") BigDecimal productMRP,
-			@NotNull(message = "Manufacturing date is required") Date productMFD,
-			@NotNull(message = "Expiry date is required") Date productExpiryDate,
-			@NotEmpty(message = "Product model is required") @Size(max = 30, message = "Product model must not exceed 30 characters") String productModel,
-			byte[] productImage) {
-		super();
+	public product() {
 		this.productId = productId;
 		this.productName = productName;
 		this.productDesc = productDesc;
@@ -125,12 +115,11 @@ public class product {
 		this.productModel = productModel;
 		this.productImage = productImage;
 	}
-	public product() {
-		super();
-	}
     public void setImageFileName(String uniqueFileName) {
-    } 
-    
-    
-    
+    }
+
+
+
+	
+	    
 }

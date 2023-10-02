@@ -43,5 +43,8 @@ public class order {
     @Column(name = "quantity", nullable = false)
     private int quantity;
 
+    public void setImageFileName(String uniqueFileName) {
+    }
+
     
 }
