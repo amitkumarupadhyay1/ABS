@@ -26,22 +26,22 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr th:each="product : ${product}">
-					<td th:text="${Product.id}"></td>
-					<td th:text="${Product.name}"></td>
-					<td th:text="${Product.DESCRIPTION}"></td>
-					<td th:text="${Product.MRP}"></td>
-					<td th:text="${Product.MFD}"></td>
-					<td th:text="${Product.EXPIRY_DATE}"></td>
-					<td th:text="${product.MODEL}"></td>
-					<td>
+				<tr th:each="product : ${products}">
+					<td th:text="${product.productId}"></td>
+					<td th:text="${product.productName}"></td>
+					<td th:text="${product.productDesc}"></td>
+					<td th:text="${product.productMRP}"></td>
+					<td th:text="${product.productMFD}"></td>
+					<td th:text="${product.productExpiryDate}"></td>
+					<td th:text="${product.productModel}"></td>
+					<!-- <td>
 						<img th:src="'/productImages/' + ${product.imageFileName}" width="100" height="100"
 							alt="Product Image" border="2" class="rounded mx-auto d-block" />
-					</td>
+					</td> -->
 
 					<td>
-						<a class="btn btn-primary btn-sm" th:href="@{'/product/edit/' + ${product.id}}">Edit</a>
-						<a class="btn btn-danger btn-sm" th:href="@{'/product/delete/' + ${product.id}}">Delete</a>
+						<a class="btn btn-primary btn-sm" th:href="@{'/product/edit/' + ${product.productId}}">Edit</a>
+						<a class="btn btn-danger btn-sm" th:href="@{'/product/delete/' + ${product.productId}}">Delete</a>
 					</td>
 				</tr>
 			</tbody>

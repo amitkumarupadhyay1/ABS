@@ -8,7 +8,7 @@
 <body>
     <div class="container">
         <h1>Order List</h1>
-        <a class="btn btn-primary mb-3" th:href="@{/orders/list}">Add Order</a>
+
         <table class="table table-bordered">
             <thead class="thead-dark">
                 <tr>
@@ -23,7 +23,7 @@
             <tbody>
                 <tr th:each="order : ${orders}">
                     <td th:text="${order.order_id}"></td>
-                    <td th:text="${order.customer_id}"></td>
+                    <td th:text="${customer.customer_id}"></td>
                     <td th:text="${order.order_product}"></td>
                     <td th:text="${order.order_date}"></td>
                     <td th:text="${order.quantity}"></td>

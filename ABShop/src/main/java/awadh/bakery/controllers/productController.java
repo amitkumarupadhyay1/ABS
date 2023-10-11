@@ -65,14 +65,14 @@ public class productController {
         }
         
 
-        if (!imageFile.isEmpty()) {
+     //   if (!imageFile.isEmpty()) {
             productImage pi=new productImage();
             pi.setImageName(System.currentTimeMillis() + "_"+imageFile.getOriginalFilename()); 
             pi.setImageType(imageFile.getContentType());
             pi.setImageData(imageFile.getBytes());
             pi.setProduct(product); 
             imageRepository.save(pi);     
-        }
+       // }
 
         // Save the product data to the database
         productRepository.save(product);

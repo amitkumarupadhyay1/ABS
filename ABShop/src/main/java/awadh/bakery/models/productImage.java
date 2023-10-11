@@ -1,5 +1,6 @@
 package awadh.bakery.models;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -25,9 +26,8 @@ public class productImage {
     @Column
     private String imageType;
     @Column
-    @Lob
     private byte[] imageData;
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     private product product;
    
 }

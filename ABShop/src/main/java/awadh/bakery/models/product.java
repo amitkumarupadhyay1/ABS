@@ -1,10 +1,12 @@
 package awadh.bakery.models;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.DecimalMin;
@@ -57,7 +59,8 @@ public class product implements Serializable{
     @Size(max = 30, message = "Product model must not exceed 30 characters")
     private String productModel;
     
-	@OneToOne
-	private productImage productImage;
+	@OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name="image_id")
+    private productImage productImage;
 	    
 }
