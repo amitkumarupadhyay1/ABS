@@ -3,25 +3,23 @@ package awadh.bakery.controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.io.IOException;
 import java.util.List;
-import awadh.bakery.models.*;
+import awadh.bakery.models.product;
+import awadh.bakery.models.productRepository;
+
 import org.springframework.ui.Model;
 
 @Controller
 public class productController {
 
-    private final productRepository productRepository;
+	@Autowired
+	private productRepository productRepository;
 
-    @Autowired
-    public productController(productRepository productRepository) {
-        this.productRepository = productRepository;
-    }
-
-    @GetMapping("/products/list")
-    public String getAllProducts(Model model) {
-        // Retrieve the list of products from the repository
-        List<product> products = productRepository.findAll();
-        model.addAttribute("products",products);
-        return "product/product-list";
-    }
+	
 }
